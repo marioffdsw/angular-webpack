@@ -21,9 +21,10 @@ module.exports = {
 
     module: {
         loaders: [
-            { test: /\.json$/, loader: 'json' },
-            { test: /\.js$/, loader: 'babel', exclude: '/node_modules/' },
-            { test: /\.css$/, loader: 'style!css?modules!postcss' }
+            { test: /\.json$/,  loader: 'json' },
+            { test: /\.js$/,    loader: 'babel', exclude: '/node_modules/' },
+            { test: /\.css$/,   loader: 'style!css?modules!postcss' },
+            { test: /.html$/,   loader: 'html' }
         ]
     },
 

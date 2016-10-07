@@ -1,3 +1,6 @@
+var webpack = require( 'webpack' );
+var HtmlWebpackPlugin = require( 'html-webpack-plugin' );
+
 module.exports = {
 
     devtool: 'eval-source-map',
@@ -12,13 +15,26 @@ module.exports = {
         contentBase: '.\\build',
         colors: true,
         historyApiFallback: true,
-        inline: true
+        inline: true,
+        hot: true
     },
 
     module: {
         loaders: [
             { test: /\.json$/, loader: 'json' },
-            { test: /\.js$/, loader: 'babel', exclude: '/node_modules/' }
+            { test: /\.js$/, loader: 'babel', exclude: '/node_modules/' },
+            { test: /\.css$/, loader: 'style!css?modules!postcss' }
         ]
-    }
+    },
+
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: __dirname + "\\src\\index.tmpl.html"
+        }),
+        new webpack.HotModuleReplacementPlugin()
+    ],
+
+    postcss: [
+        require( 'autoprefixer' )
+    ]
 }

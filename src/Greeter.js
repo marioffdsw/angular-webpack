@@ -1,7 +1,14 @@
-var { greetText } = require( './data.json' );
+import React, { Component } from 'react';
+import config from './data.json';
 
-module.exports = function(){
-    var greet = document.createElement( 'div' );
-    greet.textContent = `This is the message from json: ${ greetText }`;
-    return greet;
+import styles from './Greeting.css';
+
+class Greeter extends Component {
+    render() {
+        return (
+            <div className={ styles.root }>{ config.greetText }</div>                            
+        );
+    }
 }
+
+export default Greeter;
